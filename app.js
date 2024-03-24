@@ -1,82 +1,41 @@
-const todoInput = document.querySelector("#todo");
-const ol = document.querySelector("ol");
+const inputTodo = document.querySelector("#todo");
+const div = document.querySelector(".java-main");
 
 
-function randarArray(){
-    ol.innerHTML = ""
-
-    for(let i = 0; i<emptyArray.length ; i++){
-        ol.innerHTML += `<li>${emptyArray[i]}
-        <button onclick = "addTodo(${i})">Delete</button>
-        <button onclick = "editTodo(${i})">Edit</button>
-        
-        </li>`
-    } 
+function randar(){
+    div.innerHTML = "";
+    for(let i = 0; i < array.length; i++){
+        div.innerHTML += ` <div class="sec-container">
+        <div class="para">
+            <h1>${array[i]}</h1>
+        </div>
+        <div class="sec-buttons">
+            <button class="btn-1" onclick="Delete(${i})">Delete <i class="fa-solid fa-trash" id ="red"></i></button>
+            <button class="btn-2" onclick="Edit(${i})">Edit <i class="fa-solid fa-pen-to-square" id ="green"></i></button>
+        </div>`
+    }
 }
-const emptyArray = [];
-
+const array = [];
 
 function Click(){
-    emptyArray.push(todoInput.value);
-    todoInput.value = "";
+    array.push(inputTodo.value);
+    console.log(array);
+    inputTodo.value = "";
 
-    randarArray();
+    randar()
 }
 
+function Delete(index){
+    array.splice(index , 1)
 
-
-function addTodo(index){
-    emptyArray.splice(index , 1)
-
-    randarArray()
-}
-
-function editTodo(index){
-    let updateValue = prompt("ENTER UPDATE VALUE");
-    emptyArray.splice(index,1,updateValue)
-
-    randarArray()
+    randar()
 
 }
 
+function Edit(index){
+    let updateValue = prompt("Please enter update value")
+    array.splice(index , 1,updateValue)
 
+    randar()
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+}
